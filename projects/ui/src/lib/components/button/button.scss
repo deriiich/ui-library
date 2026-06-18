@@ -1,0 +1,59 @@
+.ui-btn {
+  border: 1px solid transparent;
+  border-radius: var(--ui-radius-md);
+  cursor: pointer;
+  font-family: var(--ui-font-family-sans);
+  font-size: var(--ui-font-size-sm);
+  font-weight: var(--ui-font-weight-semibold);
+  line-height: var(--ui-line-height-tight);
+  padding: var(--ui-spacing-sm) var(--ui-spacing-lg);
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease,
+    opacity 120ms ease;
+  user-select: none;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+}
+
+.variant-primary {
+  background: var(--ui-color-primary);
+  color: var(--ui-color-on-primary);
+
+  &:hover:not(:disabled) {
+    background: var(--ui-color-primary-hover);
+  }
+}
+
+.variant-secondary {
+  background: var(--ui-color-surface-muted);
+  border-color: var(--ui-color-border);
+  color: var(--ui-color-text);
+
+  &:hover:not(:disabled) {
+    background: var(--ui-color-surface-muted-hover);
+  }
+}
+
+.variant-ghost {
+  background: transparent;
+  border-color: var(--ui-color-border);
+  color: var(--ui-color-text);
+
+  &:hover:not(:disabled) {
+    background: var(--ui-color-surface-hover);
+  }
+}
+
+.variant-danger {
+  background: var(--ui-color-danger);
+  color: var(--ui-color-on-danger);
+
+  &:hover:not(:disabled) {
+    background: var(--ui-color-danger-hover);
+  }
+}

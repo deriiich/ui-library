@@ -1,0 +1,24 @@
+@mixin ui-base-type {
+  font-family: var(--ui-font-family-sans);
+  font-size: var(--ui-font-size-md);
+  line-height: var(--ui-line-height-normal);
+  color: var(--ui-color-text);
+}
+
+@mixin ui-emit-tokens($tokens) {
+  @each $key, $value in $tokens {
+    --ui-#{$key}: #{$value};
+  }
+
+  @include ui-base-type;
+}
+
+@mixin ui-app-preset($app-id, $light, $dark) {
+  [data-ui-app='#{$app-id}'] {
+    @include ui-emit-tokens($light);
+  }
+
+  [data-ui-app='#{$app-id}'][data-ui-theme='dark'] {
+    @include ui-emit-tokens($dark);
+  }
+}

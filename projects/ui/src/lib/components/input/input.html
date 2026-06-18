@@ -1,0 +1,19 @@
+<label class="ui-input" [class.ui-input--disabled]="disabled">
+  @if (label) {
+    <span class="ui-input__label">
+      {{ label }}
+      @if (required) {
+        <span class="ui-input__required" aria-hidden="true">*</span>
+      }
+    </span>
+  }
+  <input
+    class="ui-input__field"
+    [type]="type"
+    [value]="value"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [required]="required"
+    (input)="onInput($event)"
+  />
+</label>
