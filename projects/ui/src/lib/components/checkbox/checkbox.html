@@ -1,0 +1,14 @@
+<label class="ui-checkbox" [class.ui-checkbox--disabled]="disabled">
+  <input
+    type="checkbox"
+    class="ui-checkbox__input"
+    [checked]="checked"
+    [disabled]="disabled"
+    [indeterminate]="indeterminate"
+    (change)="onToggle()"
+  />
+  <span class="ui-checkbox__control" aria-hidden="true"></span>
+  <span class="ui-checkbox__label">
+    <ng-content />
+  </span>
+</label>

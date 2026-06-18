@@ -1,0 +1,16 @@
+@use 'theme';
+@use 'presets/alpha/tokens' as alpha-tokens;
+
+@use 'presets/alpha';
+@use 'presets/beta';
+@use 'presets/charlie';
+
+:root,
+[data-ui-app='alpha'] {
+  @include theme.ui-emit-tokens(alpha-tokens.$light);
+}
+
+[data-ui-theme='dark']:not([data-ui-app]),
+[data-ui-app='alpha'][data-ui-theme='dark'] {
+  @include theme.ui-emit-tokens(alpha-tokens.$dark);
+}
