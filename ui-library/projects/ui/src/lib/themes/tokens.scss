@@ -1,16 +1,18 @@
 @use 'theme';
-@use 'presets/alpha/tokens' as alpha-tokens;
+@use 'products/conexiant-solutions/tokens' as conexiant-tokens;
 
-@use 'presets/alpha';
-@use 'presets/beta';
-@use 'presets/charlie';
+@use 'products/conexiant-solutions';
+@use 'products/beta';
 
 :root,
-[data-ui-app='alpha'] {
-  @include theme.ui-emit-tokens(alpha-tokens.$light);
+[data-ui-product='conexiant-solutions'] {
+  @include theme.ui-emit-tokens(conexiant-tokens.$light);
+  @include conexiant-tokens.emit-derived-light;
 }
 
-[data-ui-theme='dark']:not([data-ui-app]),
-[data-ui-app='alpha'][data-ui-theme='dark'] {
-  @include theme.ui-emit-tokens(alpha-tokens.$dark);
+[data-ui-theme='dark']:not([data-ui-product]),
+[data-ui-product='conexiant-solutions'][data-ui-theme='dark'],
+[data-ui-theme='dark'] [data-ui-product='conexiant-solutions'] {
+  @include theme.ui-emit-tokens(conexiant-tokens.$dark);
+  @include conexiant-tokens.emit-derived-dark;
 }

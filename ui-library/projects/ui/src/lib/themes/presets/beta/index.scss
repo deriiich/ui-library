@@ -1,4 +1,0 @@
-@use '../../theme' as theme;
-@use 'tokens';
-
-@include theme.ui-app-preset('beta', tokens.$light, tokens.$dark);

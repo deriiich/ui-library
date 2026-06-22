@@ -1,0 +1,12 @@
+@use '../../theme' as theme;
+@use 'tokens';
+
+@include theme.ui-product-theme('conexiant-solutions', tokens.$light, tokens.$dark);
+
+[data-ui-product='conexiant-solutions'] {
+  @include tokens.emit-derived-light;
+}
+
+[data-ui-product='conexiant-solutions'][data-ui-theme='dark'] {
+  @include tokens.emit-derived-dark;
+}

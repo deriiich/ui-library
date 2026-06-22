@@ -13,12 +13,13 @@
   @include ui-base-type;
 }
 
-@mixin ui-app-preset($app-id, $light, $dark) {
-  [data-ui-app='#{$app-id}'] {
+@mixin ui-product-theme($product-id, $light, $dark) {
+  [data-ui-product='#{$product-id}'] {
     @include ui-emit-tokens($light);
   }
 
-  [data-ui-app='#{$app-id}'][data-ui-theme='dark'] {
+  [data-ui-product='#{$product-id}'][data-ui-theme='dark'],
+  [data-ui-theme='dark'] [data-ui-product='#{$product-id}'] {
     @include ui-emit-tokens($dark);
   }
 }

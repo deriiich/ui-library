@@ -1,16 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { DEFAULT_UI_PRODUCT, UI_PRODUCT_ARG_TYPE } from '../../theme/ui-product';
 import { RadioButtonComponent } from './radio-button';
 
 const meta: Meta<RadioButtonComponent> = {
   title: 'Components/Radio Button',
   component: RadioButtonComponent,
   argTypes: {
+    product: UI_PRODUCT_ARG_TYPE,
     name: { control: 'text' },
     value: { control: 'text' },
     checked: { control: 'boolean' },
     disabled: { control: 'boolean' },
   },
   args: {
+    product: DEFAULT_UI_PRODUCT,
     name: 'plan',
     value: 'basic',
     checked: false,
@@ -18,7 +21,7 @@ const meta: Meta<RadioButtonComponent> = {
   },
   render: (args) => ({
     props: args,
-    template: `<ui-radio-button [name]="name" [value]="value" [checked]="checked" [disabled]="disabled">Option</ui-radio-button>`,
+    template: `<ui-radio-button [product]="product" [name]="name" [value]="value" [checked]="checked" [disabled]="disabled">Option</ui-radio-button>`,
   }),
 };
 

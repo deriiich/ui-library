@@ -1,0 +1,4 @@
+@use '../../theme' as theme;
+@use 'tokens';
+
+@include theme.ui-product-theme('beta', tokens.$light, tokens.$dark);

@@ -21,6 +21,20 @@
   margin: 0 0 var(--ui-spacing-xl);
 }
 
+.ui-foundations__product-banner {
+  background: var(--ui-color-surface-muted);
+  border: 1px solid var(--ui-color-border);
+  border-radius: var(--ui-radius-md);
+  color: var(--ui-color-text);
+  font-size: var(--ui-font-size-sm);
+  margin: 0 0 var(--ui-spacing-lg);
+  padding: var(--ui-spacing-sm) var(--ui-spacing-md);
+}
+
+.ui-foundations__product-banner-mode {
+  color: var(--ui-color-text-muted);
+}
+
 .ui-foundations__section {
   margin-bottom: var(--ui-spacing-2xl);
 
