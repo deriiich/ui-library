@@ -4,7 +4,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "shared-ui": ["../Ui-Library/dist/shared-ui"]
+      "shared-ui": ["../ui-library/dist/ui"]
     },
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,

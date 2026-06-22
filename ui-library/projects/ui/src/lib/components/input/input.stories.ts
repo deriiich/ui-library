@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { DEFAULT_UI_PRODUCT, UI_PRODUCT_ARG_TYPE } from '../../theme/ui-product';
 import { InputComponent } from './input';
 
 const meta: Meta<InputComponent> = {
   title: 'Components/Input',
   component: InputComponent,
   argTypes: {
+    product: UI_PRODUCT_ARG_TYPE,
     label: { control: 'text' },
     placeholder: { control: 'text' },
     type: {
@@ -16,6 +18,7 @@ const meta: Meta<InputComponent> = {
     required: { control: 'boolean' },
   },
   args: {
+    product: DEFAULT_UI_PRODUCT,
     label: 'Email',
     placeholder: 'you@example.com',
     type: 'email',
@@ -27,6 +30,7 @@ const meta: Meta<InputComponent> = {
     props: args,
     template: `
       <ui-input
+        [product]="product"
         [label]="label"
         [placeholder]="placeholder"
         [type]="type"

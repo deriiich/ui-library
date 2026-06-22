@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { DEFAULT_UI_PRODUCT, UI_PRODUCT_ARG_TYPE } from '../../theme/ui-product';
 import { ButtonComponent } from './button';
 
 const meta: Meta<ButtonComponent> = {
   title: 'Components/Button',
   component: ButtonComponent,
   argTypes: {
+    product: UI_PRODUCT_ARG_TYPE,
     variant: {
       control: 'select',
       options: ['primary', 'secondary', 'ghost', 'danger'],
@@ -12,12 +14,13 @@ const meta: Meta<ButtonComponent> = {
     disabled: { control: 'boolean' },
   },
   args: {
+    product: DEFAULT_UI_PRODUCT,
     variant: 'primary',
     disabled: false,
   },
   render: (args) => ({
     props: args,
-    template: `<ui-button [variant]="variant" [disabled]="disabled">Button</ui-button>`,
+    template: `<ui-button [product]="product" [variant]="variant" [disabled]="disabled">Button</ui-button>`,
   }),
 };
 

@@ -1,0 +1,297 @@
+@use 'sass:string';
+@use 'sass:map';
+@use 'variables' as vars;
+
+// Shared UI component tokens — reference brand variables, not raw hex.
+$ui-semantic-light: (
+  color-primary: var(--conexiant-solutions-primary-text),
+  color-primary-hover: var(--conexiant-solutions-primary-hover),
+  color-on-primary: var(--cnxsolutions-white),
+  color-danger: var(--conexiant-solutions-danger),
+  color-danger-hover: var(--conexiant-solutions-danger-hover),
+  color-on-danger: var(--cnxsolutions-white),
+  color-text: var(--conexiant-solutions-primary-text),
+  color-text-muted: var(--cnxsolutions-secondary-grey-70),
+  color-border: var(--cnxsolutions-utility-grey-10),
+  color-surface: var(--cnxsolutions-white),
+  color-surface-muted: var(--cnxsolutions-bg-grey),
+  color-surface-muted-hover: var(--cnxsolutions-secondary-grey-20),
+  color-surface-hover: rgba(0, 111, 213, 0.08),
+  spacing-xs: var(--cnxsolutions-spacing-2),
+  spacing-sm: var(--cnxsolutions-spacing-4),
+  spacing-md: var(--cnxsolutions-spacing-6),
+  spacing-lg: var(--cnxsolutions-spacing-8),
+  spacing-xl: var(--cnxsolutions-spacing-10),
+  spacing-2xl: var(--cnxsolutions-spacing-14),
+  spacing-3xl: var(--cnxsolutions-spacing-18),
+  radius-sm: var(--cnxsolutions-radius-sm),
+  radius-md: var(--cnxsolutions-radius-md),
+  radius-lg: var(--cnxsolutions-radius-lg),
+  radius-full: var(--cnxsolutions-radius-round),
+  font-family-sans: var(--cnxsolutions-body-font),
+  font-family-mono: "ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace",
+  font-size-xs: var(--cnxsolutions-fs-2),
+  font-size-sm: var(--cnxsolutions-fs-3),
+  font-size-md: var(--cnxsolutions-fs-4),
+  font-size-lg: var(--cnxsolutions-fs-5),
+  font-size-xl: var(--cnxsolutions-fs-6),
+  font-size-2xl: var(--cnxsolutions-fs-7),
+  font-weight-regular: var(--cnxsolutions-fw-regular),
+  font-weight-medium: var(--cnxsolutions-fw-medium),
+  font-weight-semibold: var(--cnxsolutions-fw-semibold),
+  font-weight-bold: var(--cnxsolutions-fw-bold),
+  line-height-tight: var(--cnxsolutions-lh-header),
+  line-height-normal: var(--cnxsolutions-lh-body),
+  line-height-relaxed: var(--cnxsolutions-lh-expanded),
+);
+
+$ui-semantic-dark: (
+  color-primary: var(--cnxsolutions-primary-blue-50),
+  color-primary-hover: var(--cnxsolutions-primary-blue-60),
+  color-on-primary: var(--cnxsolutions-white),
+  color-danger: var(--cnxsolutions-utility-red-60),
+  color-danger-hover: var(--cnxsolutions-utility-red-50),
+  color-on-danger: var(--cnxsolutions-white),
+  color-text: var(--conexiant-solutions-primary-text),
+  color-text-muted: var(--cnxsolutions-primary-blue-80),
+  color-border: var(--cnxsolutions-utility-grey-100),
+  color-surface: var(--cnxsolutions-bg-grey),
+  color-surface-muted: var(--cnxsolutions-primary-blue-10),
+  color-surface-muted-hover: var(--cnxsolutions-primary-blue-20),
+  color-surface-hover: rgba(13, 147, 204, 0.12),
+  spacing-xs: var(--cnxsolutions-spacing-2),
+  spacing-sm: var(--cnxsolutions-spacing-4),
+  spacing-md: var(--cnxsolutions-spacing-6),
+  spacing-lg: var(--cnxsolutions-spacing-8),
+  spacing-xl: var(--cnxsolutions-spacing-10),
+  spacing-2xl: var(--cnxsolutions-spacing-14),
+  spacing-3xl: var(--cnxsolutions-spacing-18),
+  radius-sm: var(--cnxsolutions-radius-sm),
+  radius-md: var(--cnxsolutions-radius-md),
+  radius-lg: var(--cnxsolutions-radius-lg),
+  radius-full: var(--cnxsolutions-radius-round),
+  font-family-sans: var(--cnxsolutions-body-font),
+  font-family-mono: "ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace",
+  font-size-xs: var(--cnxsolutions-fs-2),
+  font-size-sm: var(--cnxsolutions-fs-3),
+  font-size-md: var(--cnxsolutions-fs-4),
+  font-size-lg: var(--cnxsolutions-fs-5),
+  font-size-xl: var(--cnxsolutions-fs-6),
+  font-size-2xl: var(--cnxsolutions-fs-7),
+  font-weight-regular: var(--cnxsolutions-fw-regular),
+  font-weight-medium: var(--cnxsolutions-fw-medium),
+  font-weight-semibold: var(--cnxsolutions-fw-semibold),
+  font-weight-bold: var(--cnxsolutions-fw-bold),
+  line-height-tight: 1.2,
+  line-height-normal: 1.4,
+  line-height-relaxed: 1.5,
+);
+
+$light: map.merge(vars.$primitives-light, $ui-semantic-light);
+$dark: map.merge(map.merge(vars.$primitives-light, vars.$primitives-dark), $ui-semantic-dark);
+
+@mixin emit-brand-aliases-light {
+  --conexiant-solutions-primary-text: var(--cnxsolutions-primary-blue-100);
+  --conexiant-solutions-primary-brand: var(--cnxsolutions-primary-blue-90);
+  --conexiant-solutions-primary-hover: var(--cnxsolutions-primary-green-60);
+  --conexiant-solutions-danger: var(--cnxsolutions-utility-red-60);
+  --conexiant-solutions-danger-hover: var(--cnxsolutions-utility-red-70);
+}
+
+@mixin emit-brand-aliases-dark {
+  --conexiant-solutions-primary-text: var(--cnxsolutions-primary-blue-100);
+  --conexiant-solutions-primary-brand: var(--cnxsolutions-primary-blue-50);
+  --conexiant-solutions-primary-hover: var(--cnxsolutions-primary-blue-60);
+  --conexiant-solutions-danger: var(--cnxsolutions-utility-red-60);
+  --conexiant-solutions-danger-hover: var(--cnxsolutions-utility-red-50);
+}
+
+@mixin emit-native-aliases($tokens) {
+  @each $key, $value in $tokens {
+    @if string.index($key, 'cnxsolutions-') == 1 {
+      --#{$key}: var(--ui-#{$key});
+    }
+  }
+}
+
+@mixin emit-derived-light {
+  @include emit-brand-aliases-light;
+  @include emit-native-aliases(vars.$primitives-light);
+
+  --cnxsolutions-lh-header: 1.2;
+  --cnxsolutions-lh-body: 1.4;
+  --cnxsolutions-margin-static: var(--cnxsolutions-spacing-10);
+  --cnxsolutions-padding-body: var(--cnxsolutions-spacing-10);
+  --cnxsolutions-padding-body-xs: 0rem;
+  --cnxsolutions-padding-article-body: var(--cnxsolutions-spacing-14);
+  --cnxsolutions-padding-static-xs: var(--cnxsolutions-spacing-2);
+  --cnxsolutions-padding-static: var(--cnxsolutions-spacing-8);
+  --cnxsolutions-padding-xs: var(--cnxsolutions-spacing-3);
+  --cnxsolutions-padding-sm: var(--cnxsolutions-spacing-5);
+  --cnxsolutions-padding-smedium: var(--cnxsolutions-spacing-6);
+  --cnxsolutions-padding-md: var(--cnxsolutions-spacing-8);
+  --cnxsolutions-padding-lg: var(--cnxsolutions-spacing-10);
+  --cnxsolutions-padding-xl: var(--cnxsolutions-spacing-14);
+  --cnxsolutions-padding-xxl: var(--cnxsolutions-spacing-18);
+  --cnxsolutions-gutter-static-xs: var(--cnxsolutions-spacing-2);
+  --cnxsolutions-gutter-xs: var(--cnxsolutions-spacing-3);
+  --cnxsolutions-gutter-sm: var(--cnxsolutions-spacing-5);
+  --cnxsolutions-gutter-smedium: var(--cnxsolutions-spacing-6);
+  --cnxsolutions-gutter-md: var(--cnxsolutions-spacing-8);
+  --cnxsolutions-gutter-lg: var(--cnxsolutions-spacing-10);
+  --cnxsolutions-gutter-xl: var(--cnxsolutions-spacing-14);
+  --cnxsolutions-gutter-xxl: var(--cnxsolutions-spacing-18);
+  --cnxsolutions-fs-h1-global: var(--cnxsolutions-fs-11);
+  --cnxsolutions-fs-h2-global: var(--cnxsolutions-fs-9);
+  --cnxsolutions-fs-h3-global: var(--cnxsolutions-fs-7);
+  --cnxsolutions-fs-h4-global: var(--cnxsolutions-fs-6);
+  --cnxsolutions-fs-h5-global: var(--cnxsolutions-fs-5);
+  --cnxsolutions-fs-h6-global: var(--cnxsolutions-fs-5);
+  --cnxsolutions-fs-h1-article: var(--cnxsolutions-fs-12);
+  --cnxsolutions-fs-h2-article: var(--cnxsolutions-fs-11);
+  --cnxsolutions-fs-h3-article: var(--cnxsolutions-fs-10);
+  --cnxsolutions-fs-h4-article: var(--cnxsolutions-fs-9);
+  --cnxsolutions-fs-h5-article: var(--cnxsolutions-fs-8);
+  --cnxsolutions-fs-h6-article: var(--cnxsolutions-fs-7);
+  --cnxsolutions-fs-xl-callout: var(--cnxsolutions-fs-14);
+  --cnxsolutions-fs-lg-callout: var(--cnxsolutions-fs-13);
+  --cnxsolutions-fs-md-callout: var(--cnxsolutions-fs-10);
+  --cnxsolutions-fs-sm-callout: var(--cnxsolutions-fs-8);
+  --cnxsolutions-lh-h1: var(--cnxsolutions-lh-11);
+  --cnxsolutions-lh-h2: var(--cnxsolutions-lh-9);
+  --cnxsolutions-lh-h3: var(--cnxsolutions-lh-8);
+  --cnxsolutions-lh-h4: var(--cnxsolutions-lh-7);
+  --cnxsolutions-lh-h5: var(--cnxsolutions-lh-6);
+  --cnxsolutions-lh-h6: var(--cnxsolutions-lh-5);
+  --text-primary: var(--conexiant-solutions-primary-text);
+  --text-primary-hover: var(--cnxsolutions-primary-blue-90);
+  --text-primary-selected: var(--cnxsolutions-primary-blue-90);
+  --text-primary-contrastText: var(--cnxsolutions-white);
+  --text-primary-85pct: hsl(from var(--cnxsolutions-primary-blue-70) h s l / 0.85);
+  --text-primary-65pct: hsl(from var(--cnxsolutions-primary-blue-70) h s l / 0.65);
+  --text-secondary: hsl(from var(--cnxsolutions-primary-blue-60) h s l / 0.85);
+  --text-secondary-hover: var(--cnxsolutions-primary-blue-70);
+  --text-secondary-selected: var(--cnxsolutions-primary-blue-70);
+  --text-secondary-contrastText: var(--cnxsolutions-white);
+  --text-tertiary: hsl(from var(--cnxsolutions-primary-blue-70) h s l / 0.65);
+  --border-regular: var(--cnxsolutions-utility-grey-10);
+  --border-emphasis: var(--cnxsolutions-primary-blue-60);
+  --border-focused: var(--cnxsolutions-primary-blue-20);
+  --border-subtleWhite: hsl(from var(--cnxsolutions-utility-grey-10) h s l / 0.5);
+  --divider: var(--border-regular);
+  --background-primary: var(--cnxsolutions-white);
+  --background-secondary: var(--cnxsolutions-bg-grey);
+  --background-dark: var(--cnxsolutions-primary-blue-100);
+  --background-light: var(--cnxsolutions-white);
+  --background-callout: var(--cnxsolutions-primary-blue-60);
+  --gradient-100: var(--cnxsolutions-primary-blue-70);
+  --gradient-200: var(--cnxsolutions-primary-blue-100);
+  --megamenu-bg: var(--cnxsolutions-primary-blue-100);
+  --megamenu-color: var(--cnxsolutions-white);
+  --gradient-nav-1: linear-gradient(277.9deg, var(--megamenu-bg) 11.57%, rgba(0, 104, 202, 0.0695233) 18.44%, rgba(0, 98, 191, 0.136589) 33.17%, var(--megamenu-bg) 50.2%);
+  --gradient-nav-2: linear-gradient(281.09deg, var(--megamenu-bg) 15.1%, rgba(0, 104, 202, 0.0695233) 25.24%, rgba(0, 98, 191, 0.136589) 47.01%, var(--megamenu-bg) 72.16%);
+  --gradient-nav-3: linear-gradient(281.09deg, var(--megamenu-bg) 15.1%, rgba(0, 104, 202, 0.0695233) 25.24%, rgba(0, 98, 191, 0.136589) 47.01%, var(--megamenu-bg) 72.16%);
+  --gradient-nav-4: linear-gradient(279.47deg, var(--megamenu-bg) 46.37%, rgba(0, 98, 191, 0.136589) 62.84%, rgba(0, 104, 202, 0.0695233) 77.09%, var(--megamenu-bg) 83.73%);
+  --avatar-background: var(--cnxsolutions-secondary-grey-50);
+  --btn-focusedBorder: var(--cnxsolutions-primary-blue-20);
+  --btn-cta: var(--cnxsolutions-primary-green-60);
+  --btn-cta-hover: var(--cnxsolutions-primary-green-70);
+  --btn-cta-active: var(--cnxsolutions-primary-green-70);
+  --btn-cta-disabled: var(--cnxsolutions-primary-green-20);
+  --btn-primary: var(--cnxsolutions-primary-blue-90);
+  --btn-primary-hover: var(--cnxsolutions-primary-green-60);
+  --btn-primary-active: var(--cnxsolutions-primary-blue-100);
+  --btn-primary-disabled: var(--cnxsolutions-primary-blue-40);
+  --btn-primary-outlinedFocused: var(--ui-btn-primary-outlined-focused);
+  --btn-primary-rev: var(--cnxsolutions-white);
+  --btn-primary-rev-hover: var(--cnxsolutions-primary-green);
+  --btn-primary-rev-active: var(--cnxsolutions-white);
+  --btn-primary-rev-disabled: hsl(from var(--cnxsolutions-white) h s l / 0.5);
+  --btn-primary-rev-contrastText: var(--text-primary);
+  --btn-secondary: var(--cnxsolutions-secondary-grey-10);
+  --btn-secondary-hover: var(--cnxsolutions-secondary-grey-20);
+  --btn-secondary-active: var(--cnxsolutions-secondary-grey-20);
+  --btn-secondary-disabled: hsl(from var(--cnxsolutions-secondary-grey-10) h s l / 0.5);
+  --badge-cta: var(--cnxsolutions-primary-blue-60);
+  --badge-cta-hover: var(--cnxsolutions-primary-blue-80);
+  --badge-cta-active: var(--cnxsolutions-primary-blue-80);
+  --badge-primary: var(--cnxsolutions-primary-blue-20);
+  --badge-primary-hover: var(--cnxsolutions-primary-blue-10);
+  --badge-primary-active: var(--cnxsolutions-primary-blue-10);
+  --card-backgrounds-primary: hsl(0 0 100 / 1);
+  --card-backgrounds-secondary: hsl(210 60 98 / 0.96);
+  --card-backgrounds-gradient-10: radial-gradient(1253.01% 343.82% at -10.18% -53.79%, var(--cnxsolutions-gradient-blue-10, #fff) 0%, var(--cnxsolutions-gradient-blue-20, #bee1f0) 65%);
+  --card-backgrounds-gradient-50: radial-gradient(1563.29% 807.52% at -6.58% -321.71%, var(--cnxsolutions-gradient-blue-20, #bee1f0) 20.76%, var(--cnxsolutions-gradient-blue-30, #0d93cc) 71.46%, var(--cnxsolutions-primary-blue-80, #126386) 100%);
+  --card-backgrounds-gradient-90: radial-gradient(1449.63% 249.38% at -42.6% -71.67%, var(--cnxsolutions-primary-blue-30, #8fc8e0) 0%, var(--cnxsolutions-gradient-blue-30, #0d93cc) 51.77%, var(--cnxsolutions-gradient-blue-40, #1a4152) 100%);
+
+  @media (max-width: 832px) {
+    --cnxsolutions-min-width: 561px;
+    --cnxsolutions-max-width: 768px;
+    --cnxsolutions-padding-body: var(--cnxsolutions-spacing-8);
+    --cnxsolutions-fs-xl-callout: var(--cnxsolutions-fs-13);
+    --cnxsolutions-fs-lg-callout: var(--cnxsolutions-fs-10);
+    --cnxsolutions-fs-md-callout: var(--cnxsolutions-fs-9);
+    --cnxsolutions-fs-sm-callout: var(--cnxsolutions-fs-7);
+    --cnxsolutions-global-h1-fs: var(--cnxsolutions-fs-10);
+    --cnxsolutions-global-h2-fs: var(--cnxsolutions-fs-8);
+    --cnxsolutions-global-h3-fs: var(--cnxsolutions-fs-6);
+    --cnxsolutions-global-h4-fs: var(--cnxsolutions-fs-5);
+    --cnxsolutions-global-h5-fs: var(--cnxsolutions-fs-4);
+    --cnxsolutions-global-h6-fs: var(--cnxsolutions-fs-4);
+    --cnxsolutions-article-h1-fs: var(--cnxsolutions-fs-9);
+    --cnxsolutions-article-h2-fs: var(--cnxsolutions-fs-7);
+    --cnxsolutions-article-h3-fs: var(--cnxsolutions-fs-6);
+    --cnxsolutions-article-h4-fs: var(--cnxsolutions-fs-5);
+    --cnxsolutions-article-h5-fs: var(--cnxsolutions-fs-4);
+    --cnxsolutions-article-h6-fs: var(--cnxsolutions-fs-3);
+  }
+
+  @media (max-width: 624px) {
+    --cnxsolutions-min-width: 320px;
+    --cnxsolutions-max-width: 560px;
+    --cnxsolutions-padding-body: 0rem;
+    --cnxsolutions-padding-body-xs: var(--cnxsolutions-spacing-6);
+    --cnxsolutions-padding-article-body: var(--cnxsolutions-spacing-8);
+    --cnxsolutions-padding-xs: var(--cnxsolutions-spacing-2);
+    --cnxsolutions-padding-sm: var(--cnxsolutions-spacing-4);
+    --cnxsolutions-padding-smedium: var(--cnxsolutions-spacing-5);
+    --cnxsolutions-padding-md: var(--cnxsolutions-spacing-6);
+    --cnxsolutions-padding-lg: var(--cnxsolutions-spacing-8);
+    --cnxsolutions-padding-xl: var(--cnxsolutions-spacing-12);
+    --cnxsolutions-padding-xxl: var(--cnxsolutions-spacing-14);
+    --cnxsolutions-gutter-xs: var(--cnxsolutions-spacing-2);
+    --cnxsolutions-gutter-sm: var(--cnxsolutions-spacing-4);
+    --cnxsolutions-gutter-smedium: var(--cnxsolutions-spacing-5);
+    --cnxsolutions-gutter-md: var(--cnxsolutions-spacing-6);
+    --cnxsolutions-gutter-lg: var(--cnxsolutions-spacing-8);
+    --cnxsolutions-gutter-xl: var(--cnxsolutions-spacing-12);
+    --cnxsolutions-gutter-xxl: var(--cnxsolutions-spacing-14);
+    --cnxsolutions-global-h1-fs: var(--cnxsolutions-fs-9);
+    --cnxsolutions-global-h2-fs: var(--cnxsolutions-fs-7);
+    --cnxsolutions-global-h3-fs: var(--cnxsolutions-fs-6);
+    --cnxsolutions-global-h4-fs: var(--cnxsolutions-fs-5);
+    --cnxsolutions-global-h5-fs: var(--cnxsolutions-fs-4);
+    --cnxsolutions-global-h6-fs: var(--cnxsolutions-fs-3);
+    --cnxsolutions-article-h1-fs: var(--cnxsolutions-fs-9);
+    --cnxsolutions-article-h2-fs: var(--cnxsolutions-fs-7);
+    --cnxsolutions-article-h3-fs: var(--cnxsolutions-fs-6);
+    --cnxsolutions-article-h4-fs: var(--cnxsolutions-fs-5);
+    --cnxsolutions-article-h5-fs: var(--cnxsolutions-fs-4);
+    --cnxsolutions-article-h6-fs: var(--cnxsolutions-fs-3);
+  }
+}
+
+@mixin emit-derived-dark {
+  @include emit-brand-aliases-dark;
+  @include emit-native-aliases(vars.$primitives-dark);
+
+  --text-primary: var(--conexiant-solutions-primary-text);
+  --text-secondary: var(--cnxsolutions-primary-blue-70);
+  --background-primary: var(--cnxsolutions-bg-grey);
+  --background-secondary: var(--cnxsolutions-primary-blue-10);
+  --background-dark: var(--cnxsolutions-primary-blue-10);
+  --border-regular: var(--cnxsolutions-utility-grey-100);
+  --border-emphasis: var(--cnxsolutions-primary-blue-60);
+  --btn-primary: var(--cnxsolutions-primary-blue-50);
+  --btn-primary-hover: var(--cnxsolutions-primary-blue-60);
+}

@@ -12,20 +12,19 @@ const preview: Preview = {
     layout: 'centered',
   },
   globalTypes: {
-    appId: {
-      description: 'Application theme (colors, typography, spacing)',
+    productId: {
+      description: 'Product theme (colors, typography, spacing)',
       toolbar: {
-        title: 'Application',
+        title: 'Product',
         icon: 'component',
         items: [
-          { value: 'alpha', title: 'Alpha' },
+          { value: 'conexiant-solutions', title: 'Conexiant Solutions' },
           { value: 'beta', title: 'Beta' },
-          { value: 'charlie', title: 'Charlie' },
         ],
       },
     },
     colorMode: {
-      description: 'Light or dark mode within the selected app',
+      description: 'Light or dark mode within the selected product',
       toolbar: {
         title: 'Color mode',
         icon: 'circlehollow',
@@ -36,13 +35,17 @@ const preview: Preview = {
       },
     },
   },
+  initialGlobals: {
+    productId: 'conexiant-solutions',
+    colorMode: 'light',
+  },
   decorators: [
     (storyFn, context) => {
       const root = document.documentElement;
-      const appId = context.globals['appId'] ?? 'alpha';
+      const productId = context.globals['productId'] ?? 'conexiant-solutions';
       const colorMode = context.globals['colorMode'] ?? 'light';
 
-      root.setAttribute('data-ui-app', appId);
+      root.setAttribute('data-ui-product', productId);
       root.setAttribute('data-ui-theme', colorMode);
 
       return storyFn();
